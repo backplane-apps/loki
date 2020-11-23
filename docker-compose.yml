@@ -1,0 +1,17 @@
+version: "3"
+
+volumes:
+  loki-data:
+
+networks:
+  backplane:
+    external: true
+
+services:
+  loki:
+    image: grafana/loki:2.0.0
+    networks:
+      - backplane
+    volumes:
+      - loki-data:/tmp
+    restart: always
